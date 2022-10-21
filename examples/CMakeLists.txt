@@ -16,7 +16,7 @@ endif()
 
 # enable -Wconversion -Wsign-conversion
 if(NOT MSVC)
-	set_source_files_properties(assert.c cred.c info.c manifest.c reset.c
+	set_source_files_properties(assert.c cred.c nk3m_stuck.c info.c manifest.c reset.c
 	    retries.c setpin.c util.c PROPERTIES COMPILE_FLAGS
 	    "-Wconversion -Wsign-conversion")
 endif()
@@ -36,6 +36,10 @@ target_link_libraries(reset ${_FIDO2_LIBRARY})
 # cred
 add_executable(cred cred.c util.c ${COMPAT_SOURCES})
 target_link_libraries(cred ${_FIDO2_LIBRARY})
+
+# nk3m_stuck
+add_executable(nk3m_stuck nk3m_stuck.c util.c ${COMPAT_SOURCES})
+target_link_libraries(nk3m_stuck ${_FIDO2_LIBRARY})
 
 # assert
 add_executable(assert assert.c util.c ${COMPAT_SOURCES})
